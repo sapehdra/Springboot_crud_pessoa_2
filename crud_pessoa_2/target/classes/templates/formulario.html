@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+
+<html lang=”pt-br”>
+
+<head>
+  <meta charset=”UTF-8”>
+  <title> Listagem2 </title>
+</head>
+
+<body>
+
+	<form action="/pessoa/salvar" method="post" th:object="${pessoa}" enctype="multipart/form-data">
+	<input type="hidden" th:field="*{codigo}"> 
+	
+		Nome: <input type="text" th:field="*{nome}"> <br>
+		Time: <input type="text" th:field="*{time}"> <br>
+		Hobbie: <input type="text" th:field="*{hobbie}"> </br>
+		Data de Nascimento: <input type="text" th:field="*{dataNascimento}"> </br>
+		Foto: <input type="file" name="imagem"> </br>
+
+<br>
+
+<input type="submit" value="Cadastrar">
+
+</form>
+
+</body>
+
+</html>

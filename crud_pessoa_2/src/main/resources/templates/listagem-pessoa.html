@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset=”UTF-8”>
+  <title> Listagem </title>
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+</head>
+
+<body>
+ 
+<table class="table">
+
+		<thead>
+			<tr>
+				<th scope="col">Codigo</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Time</th>
+				<th scope="col">Hobbie</th>
+				<th scope="col">Data de Nascimento</th>
+				
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each = "pessoa : ${listarPessoas}">
+				<td th:text="${pessoa.codigo}"></td>
+				<td th:text="${pessoa.nome}"></td>
+				<td th:text="${pessoa.time}"></td>
+				<td th:text="${pessoa.hobbie}"></td>
+				<td th:text="${{pessoa.dataNascimento}}"></td>
+				<td> <img width="200" height="200" th:src="@{'/images/'+${pessoa.nome}+.png}"/> </td>
+				<td sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{/pessoa/excluir/{codigo}(codigo = ${pessoa.codigo})}"> <button type="button" class="btn btn-danger">Excluir</button></a></td>
+				<td> <a class="btn btn-primary" th:href="@{/pessoa/atualizar/{codigo}(codigo = ${pessoa.codigo})}"> Atualizar </a></td>
+
+			</tr>
+		</tbody>
+		
+	</table> 
+
+
+<script src="/js/bootstrap.min.js"> </script>
+</body>
+
+</html>
